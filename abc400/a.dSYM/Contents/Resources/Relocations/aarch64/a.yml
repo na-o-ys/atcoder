@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/naoyoshiokamae/projects/atcoder/abc400/a'
+relocations:
+  - { offset: 0x1683E, size: 0x8, addend: 0x0, symName: __ZStL8__ioinit, symObjAddr: 0x61451, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x16E93, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_a.cpp, symObjAddr: 0xF4, symBinAddr: 0x100003EE0, symSize: 0x1C }
+  - { offset: 0x16EAA, size: 0x8, addend: 0x0, symName: __Z41__static_initialization_and_destruction_0ii, symObjAddr: 0x94, symBinAddr: 0x100003E80, symSize: 0x60 }
+  - { offset: 0x16EE7, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003DEC, symSize: 0x94 }
+...
