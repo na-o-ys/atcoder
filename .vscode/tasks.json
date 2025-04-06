@@ -2,6 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "prebuild",
+            "type": "shell",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${fileDirname}/build"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            }
+        },
+        {
             "label": "build",
             "type": "shell",
             "command": "/opt/homebrew/bin/g++-12",
@@ -13,12 +25,15 @@
                 "-DONLINE_JUDGE",
                 "-I${workspaceFolder}/ac-library",
                 "-o",
-                "'${fileDirname}/${fileBasenameNoExtension}'",
+                "'${fileDirname}/build/${fileBasenameNoExtension}'",
                 "'${file}'"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
+            "dependsOn": [
+                "prebuild"
+            ],
             "problemMatcher": [
                 "$gcc"
             ],
@@ -26,6 +41,33 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "${fileDirname}/build/${fileBasenameNoExtension}",
+            "dependsOn": [
+                "build"
+            ],
+            "presentation": {
+                "clear": true,
+                "focus": true
+            }
+        },
+        {
+            "label": "run test case",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/run_test_case.sh",
+            "args": [
+                "${relativeFile}"
+            ],
+            "dependsOn": [
+                "build"
+            ],
+            "presentation": {
+                "clear": true
+            },
+            "problemMatcher": []
         }
     ]
 }
